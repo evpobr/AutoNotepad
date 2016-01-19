@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<package>
+<job id="AutoNotepadTest">
+<script language="VBScript">
+<![CDATA[
+
+Option Explicit
+Dim oApp
+Dim bClosed : bClosed = False
+
+Sub Run()
+    Set oApp = WScript.CreateObject("Autonotepad.Application", "Autonotepad_")
+ 
+    oApp.Visible = True
+    bClosed = False
+
+    Do While Not bClosed 
+        WScript.Sleep 200
+    Loop
+
+    WScript.Echo oApp.Text
+
+End Sub
+
+Sub Autonotepad_OnAppClose
+    bClosed = True
+End Sub
+
+Run
+
+
+]]>
+</script>
+</job>
+</package>

@@ -1,0 +1,24 @@
+HKCR
+{
+	AutoNotepad.Application.1 = s 'AutoNotepad Application Class'
+	{
+		CLSID = s '{BBDF80D7-C111-11D6-AD1F-0020182FF55E}'
+	}
+	AutoNotepad.Application = s 'AutoNotepad Application Class'
+	{
+		CLSID = s '{BBDF80D7-C111-11D6-AD1F-0020182FF55E}'
+		CurVer = s 'AutoNotepad.Application.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {BBDF80D7-C111-11D6-AD1F-0020182FF55E} = s 'AutoNotepad Application Class'
+		{
+			ProgID = s 'AutoNotepad.Application.1'
+			VersionIndependentProgID = s 'AutoNotepad.Application'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '{BBDF80C6-C111-11D6-AD1F-0020182FF55E}'
+			'TypeLib' = s '{BBDF80C5-C111-11D6-AD1F-0020182FF55E}'
+		}
+	}
+}

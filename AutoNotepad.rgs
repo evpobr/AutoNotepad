@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		{BBDF80C6-C111-11D6-AD1F-0020182FF55E} = s 'AutoNotepad'
+		'AUTONOTEPAD.EXE'
+		{
+			val AppID = s {BBDF80C6-C111-11D6-AD1F-0020182FF55E}
+		}
+	}
+}

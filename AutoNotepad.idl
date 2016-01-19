@@ -1,0 +1,69 @@
+// AutoNotepad.idl : IDL source for AutoNotepad.exe
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (AutoNotepad.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(BBDF80D6-C111-11D6-AD1F-0020182FF55E),
+	dual,
+	helpstring("IApplication Interface"),
+	pointer_default(unique)
+]
+interface IApplication : IDispatch
+{
+    typedef enum AutoNotepadDispid
+    {
+        andText     = 0,
+        andVisible  = 1,
+    } AutoNotepadDispid;
+
+    // Text
+    [id(andText), propget, helpstring("")]
+    HRESULT Text([out, retval] BSTR *pVal);
+    [id(andText), propput, helpstring("")]
+    HRESULT Text([in] BSTR newVal);
+
+    // Visible
+    [id(andVisible), propget, helpstring("Toggle the visibility of the application window.")]
+    HRESULT Visible([out, retval] VARIANT_BOOL *pVal);
+    [id(andVisible), propput, helpstring("Toggle the visibility of the application window.")]
+    HRESULT Visible([in] VARIANT_BOOL newVal);
+};
+
+[
+	uuid(BBDF80C5-C111-11D6-AD1F-0020182FF55E),
+	version(1.0),
+	helpstring("AutoNotepad 1.0 Type Library")
+]
+library AUTONOTEPADLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(BBDF80D8-C111-11D6-AD1F-0020182FF55E),
+		helpstring("_IApplicationEvents Interface")
+	]
+	dispinterface _IApplicationEvents
+	{
+		properties:
+		methods:
+        [id(1), helpstring("Event fired when the application is closed by the user.")]
+        HRESULT OnAppClose();
+	};
+
+	[
+		uuid(BBDF80D7-C111-11D6-AD1F-0020182FF55E),
+		helpstring("AutoNotepad Application Class")
+	]
+	coclass Application
+	{
+		[default] interface IApplication;
+		[default, source] dispinterface _IApplicationEvents;
+	};
+};
